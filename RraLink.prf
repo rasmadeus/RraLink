@@ -1,0 +1,20 @@
+include ( ./RraLinkConfig.pri )
+
+INCLUDEPATH *= $${HEADER_INSTALL_PATH}
+
+win32{
+    CONFIG(release, debug|release){
+        LIBS += -L$${LIB_INSTALL_PATH} -llibrralink
+    }
+    else{
+        LIBS += -L$${LIB_INSTALL_PATH} -llibrralinkd
+    }
+}
+unix{
+    CONFIG(release, debug|release){
+        LIBS += -L$${LIB_INSTALL_PATH} --lrralink
+    }
+    else{
+        LIBS += -L$${LIB_INSTALL_PATH} -lrralinkd
+    }
+}
